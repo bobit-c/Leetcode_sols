@@ -3,10 +3,10 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
     struct ListNode* tail = &ans;
     ans.next = NULL;
 
-    int rem = 0;
+    int carry = 0;
 
-    while (l1 || l2 || rem) {
-        int sum = rem;
+    while (l1 || l2 || carry) {
+        int sum = carry;
 
         if (l1) {
             sum += l1->val;
@@ -17,7 +17,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
             l2 = l2->next;
         }
 
-        rem = sum / 10;
+        carry = sum / 10;
 
         struct ListNode* node = malloc(sizeof(struct ListNode));
         node->val = sum % 10;
